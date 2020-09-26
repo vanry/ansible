@@ -1,0 +1,6 @@
+timezone: Asia/Shanghai
+limit: "65535"
+
+base_url: https://mirrors.aliyun.com/repo
+base_repo: "{{ base_url }}/Centos-{{ ansible_distribution_major_version }}.repo"
+epel_repo: "{{ base_url }}/epel-{{ ansible_distribution_major_version }}.repo"

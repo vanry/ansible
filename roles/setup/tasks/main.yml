@@ -1,0 +1,19 @@
+- name: disable selinux
+  selinux:
+    state: disabled
+
+- name: change timezone to {{ timezone }}
+  timezone:
+    name: "{{ timezone }}"
+
+- name: set nofile limits
+  pam_limits:
+    domain: "*"
+    limit_type: "{{ item }}"
+    limit_item: nofile
+    value: "{{ limit }}"
+  with_items:
+    - soft
+    - hard
+
+- include: yum.yml
