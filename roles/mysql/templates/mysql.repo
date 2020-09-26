@@ -1,0 +1,6 @@
+[mysql-community]
+name=MySQL {{ mysql_version }} Community Server
+baseurl=http://repo.mysql.com/yum/mysql-{{ mysql_version }}-community/el/$releasever/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=http://repo.mysql.com/RPM-GPG-KEY-mysql

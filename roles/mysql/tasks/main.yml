@@ -1,0 +1,16 @@
+- name: copy mysql.repo
+  template:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/
+
+- name: install mysql
+  yum:
+    name: mysql-community-server
+    enablerepo: mysql-community
+    state: present
+
+- name: start and enable mysql
+  systemd:
+    name: mysqld
+    state: started
+    enabled: yes
