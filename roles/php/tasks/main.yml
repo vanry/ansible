@@ -1,0 +1,25 @@
+- name: install remi.repo
+  yum:
+    name: "{{ remi_repo }}"
+    state: present
+
+- name: install php{{ php_version }} packages
+  yum:
+    name:
+      - php
+      - php-fpm
+      - php-gd
+      - php-intl
+      - php-mbstring
+      - php-opcache
+      - php-pdo
+    enablerepo: remi-php{{ php_version }}
+    state: present
+
+# - name: copy php.ini and www.conf
+
+- name: start and enable php-fpm
+  systemd:
+    name: php-fpm
+    state: started
+    enabled: yes
