@@ -1,3 +1,15 @@
 php_version: 74
+php_packages:
+  - php
+  - php-fpm
+  - php-gd
+  - php-intl
+  - php-mbstring
+  - php-mysqlnd
+  - php-opcache
+  - php-pdo
+  - php-xml
+  - php-pecl-zip
+  - unzip
 
 remi_repo: http://rpms.remirepo.net/enterprise/remi-release-{{ ansible_distribution_major_version }}.rpm

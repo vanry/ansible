@@ -5,14 +5,7 @@
 
 - name: install php{{ php_version }} packages
   yum:
-    name:
-      - php
-      - php-fpm
-      - php-gd
-      - php-intl
-      - php-mbstring
-      - php-opcache
-      - php-pdo
+    name: "{{ php_packages }}"
     enablerepo: remi-php{{ php_version }}
     state: present
 
