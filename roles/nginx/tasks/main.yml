@@ -20,13 +20,5 @@
     name: nginx
     state: started
     enabled: yes
-
-- name: add firewalld rule for nginx
-  firewalld:
-    service: "{{ item }}"
-    state: disabled
-    permanent: yes
-    immediate: yes
-  with_items:
-    - http
-    - https
+  notify:
+    - add firewalld rule for nginx
