@@ -1,24 +1,24 @@
-- name: copy nginx.repo
+- name: Copy nginx.repo
   copy:
     src: nginx.repo
     dest: /etc/yum.repos.d/
 
-- name: install nginx
+- name: Install nginx
   yum:
     name: nginx
     state: present
 
-- name: copy nginx.conf
+- name: Copy nginx.conf
   template:
     src: nginx.conf
     dest: /etc/nginx/
   notify:
-    - reload nginx
+    - Reload nginx
 
-- name: start and enable nginx
+- name: Start and enable nginx
   systemd:
     name: nginx
     state: started
     enabled: yes
   notify:
-    - add firewalld rule for nginx
+    - Add firewalld rule for nginx

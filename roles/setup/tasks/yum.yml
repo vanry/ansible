@@ -1,21 +1,21 @@
-- name: backup CentOS-Base.repo
+- name: Backup CentOS-Base.repo
   copy:
     src: /etc/yum.repos.d/CentOS-Base.repo
     dest: /etc/yum.repos.d/CentOS-Base.repo.backup
     remote_src: yes
     force: no
 
-- name: use aliyun CentOS-Base.repo
+- name: Use aliyun CentOS-Base.repo
   get_url:
     url: "{{ base_repo }}"
     dest: /etc/yum.repos.d/CentOS-Base.repo
 
-- name: use aliyun epel.repo
+- name: Use aliyun epel.repo
   get_url:
     url: "{{ epel_repo }}"
     dest: /etc/yum.repos.d/epel.repo
 
-- name: yum update
+- name: Update all packages
   yum:
     name: "*"
     state: latest

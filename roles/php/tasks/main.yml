@@ -1,9 +1,9 @@
-- name: install remi.repo
+- name: Install remi.repo
   yum:
     name: "{{ remi_repo }}"
     state: present
 
-- name: install php {{ php_version }} packages
+- name: Install PHP {{ php_version }} packages
   yum:
     name: "{{ php_packages }}"
     enablerepo: remi-php{{ php_version | replace(".", "") }}
@@ -11,7 +11,7 @@
 
 # - name: copy php.ini and www.conf
 
-- name: start and enable php-fpm
+- name: Start and enable PHP-FPM
   systemd:
     name: php-fpm
     state: started

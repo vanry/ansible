@@ -1,13 +1,13 @@
-- name: set hostname if hostname is defined
+- name: Set hostname to {{ hostname }}
   hostname:
     name: "{{ hostname }}"
   when: hostname is defined
 
-- name: change timezone to {{ timezone }}
+- name: Change timezone to {{ timezone }}
   timezone:
     name: "{{ timezone }}"
 
-- name: set nofile limits
+- name: Set nofile limits
   pam_limits:
     domain: "*"
     limit_type: "{{ item }}"
@@ -17,7 +17,7 @@
     - soft
     - hard
 
-- name: disable selinux
+- name: Disable SELinux
   selinux:
     state: disabled
 
