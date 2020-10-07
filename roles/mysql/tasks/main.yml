@@ -6,7 +6,6 @@
 - name: Install MySQL
   yum:
     name: mysql-community-server
-    enablerepo: mysql-community
     state: present
 
 - name: Start and enable MySQL
