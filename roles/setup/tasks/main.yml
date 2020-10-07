@@ -1,9 +1,9 @@
-- name: Set hostname to {{ hostname }}
+- name: Set hostname
   hostname:
     name: "{{ hostname }}"
   when: hostname is defined
 
-- name: Change timezone to {{ timezone }}
+- name: Set timezone to {{ timezone }}
   timezone:
     name: "{{ timezone }}"
 
