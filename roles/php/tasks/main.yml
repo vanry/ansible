@@ -3,10 +3,10 @@
     name: "{{ remi_repo }}"
     state: present
 
-- name: install php{{ php_version }} packages
+- name: install php {{ php_version }} packages
   yum:
     name: "{{ php_packages }}"
-    enablerepo: remi-php{{ php_version }}
+    enablerepo: remi-php{{ php_version | replace(".", "") }}
     state: present
 
 # - name: copy php.ini and www.conf
