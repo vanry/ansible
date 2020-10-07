@@ -1,4 +1,5 @@
 php_version: "7.4"
+php_enablerepo: remi-php{{ php_version | replace(".", "") }}
 
 php_packages:
   - php

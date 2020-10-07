@@ -6,7 +6,7 @@
 - name: Install PHP {{ php_version }} packages
   yum:
     name: "{{ php_packages }}"
-    enablerepo: remi-php{{ php_version | replace(".", "") }}
+    enablerepo: "{{ php_enablerepo }}"
     state: present
 
 # - name: copy php.ini and www.conf
