@@ -1,6 +1,6 @@
-- name: copy mysql.repo
+- name: copy mysql-community.repo
   template:
-    src: mysql.repo
+    src: mysql-community.repo
     dest: /etc/yum.repos.d/
 
 - name: install mysql
