@@ -1,6 +1,7 @@
-- name: disable selinux
-  selinux:
-    state: disabled
+- name: set hostname if hostname is defined
+  hostname:
+    name: "{{ hostname }}"
+  when: hostname is defined
 
 - name: change timezone to {{ timezone }}
   timezone:
@@ -16,4 +17,10 @@
     - soft
     - hard
 
+- name: disable selinux
+  selinux:
+    state: disabled
+
 - include: yum.yml
+
+- include: firewalld.yml
