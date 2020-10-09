@@ -1,0 +1,2 @@
+nginx_user: nginx
+nginx_connections: 51200
