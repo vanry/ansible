@@ -1,2 +1,12 @@
 nginx_user: nginx
-nginx_connections: 51200
+
+nginx_worker_connections: 51200
+
+nginx_server_tokens: Off
+
+nginx_proxy_cache_path: ""
+
+nginx_log_format: |-
+  '$remote_addr - $remote_user [$time_local] "$request" '
+  '$status $body_bytes_sent "$http_referer" '
+  '"$http_user_agent" "$http_x_forwarded_for"'
