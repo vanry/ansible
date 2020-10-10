@@ -5,11 +5,20 @@
 
 - name: Install PHP {{ php_version }} packages
   yum:
-    name: "{{ php_packages }}"
+    name: "{{ php_packages + php_packages_extra }}"
     enablerepo: "{{ php_enablerepo }}"
     state: present
 
-# - name: copy php.ini and www.conf
+- name: Copy PHP and PHP-FPM config files
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items:
+    - { src: "php.ini", dest: "/etc/" }
+    - { src: "php-fpm.conf", dest: "/etc/" }
+    - { src: "www.conf", dest: "/etc/php-fpm.d/" }
+  notify:
+    - Reload PHP-FPM
 
 - name: Start and enable PHP-FPM
   systemd:

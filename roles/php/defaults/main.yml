@@ -1,0 +1,33 @@
+php_version: "7.4"
+php_packages_extra: []
+
+php_expose_php: Off
+php_short_open_tag: On
+php_allow_url_fopen: On
+
+php_date_timezone: PRC
+php_max_execution_time: 30
+
+php_memory_limit: 256M
+php_post_max_size: 50M
+php_upload_max_filesize: 50M
+
+php_disable_functions: []
+
+php_fpm_user: apache
+php_fpm_group: apache
+
+php_fpm_listen: /run/php-fpm/php-fpm.sock
+php_fpm_listen_allowed_clients: 127.0.0.1
+php_fpm_listen_owner: nginx
+php_fpm_listen_group: nginx
+php_fpm_listen_mode: 0600
+
+php_fpm_pm_max_children: 50
+php_fpm_pm_start_servers: 5
+php_fpm_pm_min_spare_servers: 10
+php_fpm_pm_max_spare_servers: 50
+php_fpm_max_requests: 1024
+
+php_fpm_request_terminate_timeout: 100
+php_fpm_request_slowlog_timeout: 0
