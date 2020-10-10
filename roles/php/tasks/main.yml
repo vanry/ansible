@@ -1,4 +1,4 @@
-- name: Install remi.repo
+- name: Ensure Remi repo is installed
   yum:
     name: "{{ remi_repo }}"
     state: present
@@ -11,12 +11,11 @@
 
 - name: Copy PHP and PHP-FPM config files
   template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
+    src: "{{ item }}"
+    dest: /etc/
   with_items:
-    - { src: "php.ini", dest: "/etc/" }
-    - { src: "php-fpm.conf", dest: "/etc/" }
-    - { src: "www.conf", dest: "/etc/php-fpm.d/" }
+    - php.ini
+    - php-fpm.conf
   notify:
     - Reload PHP-FPM
 

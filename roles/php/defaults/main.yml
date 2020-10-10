@@ -24,7 +24,7 @@ php_fpm_listen_group: nginx
 php_fpm_listen_mode: 0600
 
 php_fpm_pm_max_children: 50
-php_fpm_pm_start_servers: 5
+php_fpm_pm_start_servers: 20
 php_fpm_pm_min_spare_servers: 10
 php_fpm_pm_max_spare_servers: 50
 php_fpm_max_requests: 1024
