@@ -1,0 +1,13 @@
+redis_bind: 127.0.0.1
+redis_port: 6379
+redis_socket: ""
+redis_timeout: 300
+
+redis_maxmemory: 0
+redis_maxmemory_policy: "noeviction"
+redis_maxmemory_samples: 5
+
+redis_appendonly: "no"
+redis_appendfsync: everysec
+
+redis_requirepass: ""

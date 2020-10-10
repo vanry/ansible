@@ -1,0 +1,24 @@
+- name: Ensure Remi repo is installed
+  yum:
+    name: "{{ remi_repo }}"
+    state: present
+
+- name: Install Redis
+  yum:
+    name: redis
+    enablerepo: remi
+    state: present
+
+- name: Copy redis.conf
+  template:
+    src: redis.conf
+    dest: /etc/
+    mode: 0644
+  notify:
+    - Restart Redis
+
+- name: Start and enable Redis
+  systemd:
+    name: redis
+    state: started
+    enabled: yes
