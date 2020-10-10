@@ -8,6 +8,13 @@
     name: mysql-community-server
     state: present
 
+- name: Copy my.cnf
+  template:
+    src: my.cnf
+    dest: /etc/
+  notify:
+    - Restart MySQL
+
 - name: Start and enable MySQL
   systemd:
     name: mysqld
