@@ -1,0 +1,4 @@
+- name: Ensure Remi Repository is installed
+  yum:
+    name: "{{ remi_repo }}"
+    state: present
