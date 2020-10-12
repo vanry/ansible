@@ -24,3 +24,6 @@
     name: php-fpm
     state: started
     enabled: yes
+
+- include: composer.yml
+  when: php_composer_enabled

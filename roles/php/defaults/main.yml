@@ -1,6 +1,11 @@
 php_version: "7.4"
 php_packages_extra: []
 
+php_composer_enabled: yes
+php_composer_path: /usr/local/bin/composer
+php_composer_url: https://mirrors.aliyun.com/composer/composer.phar
+php_composer_repo: https://mirrors.aliyun.com/composer/
+
 php_expose_php: Off
 php_short_open_tag: On
 php_allow_url_fopen: On

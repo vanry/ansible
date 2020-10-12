@@ -1,0 +1,12 @@
+- name: Check if Composer is installed
+  stat:
+    path: "{{ php_composer_path }}"
+  register: composer_bin
+
+- name: Install Composer
+  get_url:
+    url: "{{ php_composer_url }}"
+    dest: "{{ php_composer_path }}"
+    mode: 0755
+  when: not composer_bin.stat.exists
+  notify: Change Composer Repository

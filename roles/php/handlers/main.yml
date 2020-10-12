@@ -2,3 +2,10 @@
   systemd:
     name: php-fpm
     state: reloaded
+
+- name: Change Composer Repository
+  composer:
+    command: config
+    global_command: yes
+    arguments: repo.packagist composer {{ php_composer_repo }}
+  become: no
