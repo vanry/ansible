@@ -5,15 +5,10 @@
     remote_src: yes
     force: no
 
-- name: Use aliyun CentOS-Base.repo
+- name: Use Aliyun CentOS-Base.repo
   get_url:
     url: "{{ base_repo }}"
     dest: /etc/yum.repos.d/CentOS-Base.repo
-
-- name: Use aliyun epel.repo
-  get_url:
-    url: "{{ epel_repo }}"
-    dest: /etc/yum.repos.d/epel.repo
 
 - name: Update all packages
   yum:

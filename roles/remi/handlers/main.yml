@@ -1,0 +1,4 @@
+- name: Use Epel Mirror
+  get_url:
+    url: "{{ epel_repo }}"
+    dest: /etc/yum.repos.d/epel.repo
