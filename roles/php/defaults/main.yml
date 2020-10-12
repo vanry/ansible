@@ -22,7 +22,7 @@ php_disable_functions: []
 php_fpm_user: apache
 php_fpm_group: apache
 
-php_fpm_listen: /run/php-fpm/php-fpm.sock
+php_fpm_listen: /var/run/php-fpm/php-fpm.sock
 php_fpm_listen_allowed_clients: 127.0.0.1
 php_fpm_listen_owner: nginx
 php_fpm_listen_group: nginx
