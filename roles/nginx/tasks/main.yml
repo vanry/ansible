@@ -22,3 +22,5 @@
     enabled: yes
   notify:
     - Add firewalld rule for Nginx
+
+- include: vhost.yml
