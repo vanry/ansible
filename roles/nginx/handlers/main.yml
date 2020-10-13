@@ -1,12 +1,12 @@
-- name: Reload nginx
+- name: Reload Nginx
   systemd:
     name: nginx
     state: reloaded
 
-- name: Add firewalld rule for nginx
+- name: Add firewalld rule for Nginx
   firewalld:
     service: "{{ item }}"
-    state: disabled
+    state: enabled
     permanent: yes
     immediate: yes
   with_items:
