@@ -2,7 +2,7 @@ nginx_user: nginx
 
 nginx_worker_connections: 51200
 
-nginx_server_tokens: Off
+nginx_server_tokens: "Off"
 
 nginx_proxy_cache_path: ""
 
