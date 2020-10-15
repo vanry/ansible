@@ -1,0 +1,10 @@
+- name: Get MySQL temporay password for root
+  shell: grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
+  register: mysql_temporary_password
+
+- name: Change root's password
+  mysql_user:
+    name: root
+    password: "{{ mysql_root_password }}"
+    login_user: root
+    login_password: "{{ mysql_temporary_password.stdout }}"
