@@ -11,4 +11,3 @@ php_packages:
   - php-pdo
   - php-xml
   - php-pecl-zip
-  - unzip
