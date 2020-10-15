@@ -2,6 +2,7 @@
   file:
     path: "{{ nginx_default_root }}"
     state: directory
+  become: no
 
 - name: Copy default.conf
   template:
