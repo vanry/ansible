@@ -1,3 +1,7 @@
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
 - name: Ensure that firewalld is installed
   yum:
     name: firewalld

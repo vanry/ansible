@@ -17,10 +17,6 @@
     - soft
     - hard
 
-- name: Disable SELinux
-  selinux:
-    state: disabled
-
 - include: yum.yml
 
 - include: firewalld.yml
