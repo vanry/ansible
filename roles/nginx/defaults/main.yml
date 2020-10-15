@@ -12,5 +12,5 @@ nginx_log_format: |-
   '"$http_user_agent" "$http_x_forwarded_for"'
 
 nginx_default_port: 80
-nginx_default_root: /home/wwwroot/default
+nginx_default_root: "{{ ansible_env.PWD }}/default"
 nginx_default_fastcgi_pass: unix:/var/run/php-fpm/php-fpm.sock
