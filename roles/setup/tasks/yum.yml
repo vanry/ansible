@@ -15,3 +15,11 @@
     name: "*"
     state: latest
     update_cache: yes
+
+- name: Install Git, Zip and Unzip
+  yum:
+    name:
+      - git
+      - zip
+      - unzip
+    state: present
