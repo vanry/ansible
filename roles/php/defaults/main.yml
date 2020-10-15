@@ -1,7 +1,7 @@
 php_version: "7.4"
 php_packages_extra: []
 
-php_composer_enabled: yes
+php_composer_enable: yes
 php_composer_path: /usr/local/bin/composer
 php_composer_url: https://mirrors.aliyun.com/composer/composer.phar
 php_composer_repo: https://mirrors.aliyun.com/composer/
@@ -24,9 +24,9 @@ php_fpm_group: apache
 
 php_fpm_listen: /var/run/php-fpm/php-fpm.sock
 php_fpm_listen_allowed_clients: 127.0.0.1
-php_fpm_listen_owner: nginx
-php_fpm_listen_group: nginx
-php_fpm_listen_mode: 0600
+php_fpm_listen_owner: "{{ php_fpm_user }}"
+php_fpm_listen_group: "{{ php_fpm_group }}"
+php_fpm_listen_mode: 0660
 
 php_fpm_pm_max_children: 50
 php_fpm_pm_start_servers: 20

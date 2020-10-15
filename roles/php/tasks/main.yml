@@ -21,4 +21,4 @@
     enabled: yes
 
 - include: composer.yml
-  when: php_composer_enabled
+  when: php_composer_enable
