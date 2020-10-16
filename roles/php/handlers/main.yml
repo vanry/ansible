@@ -6,6 +6,6 @@
 - name: Change Composer Repository
   composer:
     command: config
-    global_command: yes
-    arguments: repo.packagist composer {{ php_composer_repo }}
+    arguments: -g repo.packagist composer {{ php_composer_repo }}
+    working_dir: "{{ ansible_env.PWD }}"
   become: no
