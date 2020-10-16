@@ -1,0 +1,7 @@
+tool_dir: "{{ ansible_env.PWD }}/default/tools"
+
+phpmyadmin_path: "{{ tool_dir }}/phpmyadmin"
+phpmyadmin_package: phpmyadmin/phpmyadmin
+
+phpredisadmin_path: "{{ tool_dir }}/php-redis-admin"
+phpredisadmin_package: erik-dubbelboer/php-redis-admin

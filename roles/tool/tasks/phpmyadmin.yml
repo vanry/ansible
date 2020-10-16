@@ -1,0 +1,12 @@
+- name: Check if phpMyAdmin is installed
+  stat:
+    path: "{{ phpmyadmin_path }}"
+  register: phpmyadmin
+
+- name: Install phpMyAdmin
+  composer:
+    command: create-project
+    arguments: "{{ phpmyadmin_package }}"
+    working_dir: "{{ tool_dir }}"
+    prefer_dist: yes
+  when: not phpmyadmin.stat.exists

@@ -1,0 +1,17 @@
+- name: Ensure tool directory exists
+  file:
+    path: "{{ tool_dir }}"
+    state: directory
+
+- name: Copy PHP Tools
+  copy:
+    src: "{{ item }}"
+    dest: "{{ tool_dir }}"
+  with_items:
+    - p.php
+    - ocp.php
+    - phpinfo.php
+
+- include: phpmyadmin.yml
+
+- include: phpredisadmin.yml

@@ -1,0 +1,12 @@
+- name: Check if phpRedisAdmin is installed
+  stat:
+    path: "{{ phpredisadmin_path }}"
+  register: phpredisadmin
+
+- name: Install phpRedisAdmin
+  composer:
+    command: create-project
+    arguments: "{{ phpredisadmin_package }}"
+    working_dir: "{{ tool_dir }}"
+    prefer_dist: yes
+  when: not phpredisadmin.stat.exists
