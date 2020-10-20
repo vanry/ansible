@@ -4,15 +4,15 @@
     enablerepo: "{{ php_enablerepo }}"
     state: present
 
-- name: Copy PHP and PHP-FPM config files
+- name: Copy php.ini and php-fpm.conf
   template:
     src: "{{ item }}"
     dest: /etc/
+  notify:
+    - Reload PHP-FPM
   with_items:
     - php.ini
     - php-fpm.conf
-  notify:
-    - Reload PHP-FPM
 
 - name: Start and enable PHP-FPM
   systemd:
