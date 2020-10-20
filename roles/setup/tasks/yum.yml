@@ -20,10 +20,12 @@
     name: "*"
     state: latest
 
-- name: Install Git, Zip and Unzip
+- name: Install Basic Packages
   yum:
     name:
       - git
+      - vim
       - zip
       - unzip
+      - bash-completion
     state: present
