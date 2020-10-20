@@ -1,5 +1,5 @@
-- name: Copy nginx.repo
-  copy:
+- name: Add nginx.repo
+  template:
     src: nginx.repo
     dest: /etc/yum.repos.d/
 
@@ -20,7 +20,13 @@
     name: nginx
     state: started
     enabled: yes
-  notify:
-    - Add firewalld rule for Nginx
 
-- include: vhost.yml
+- name: Add firewalld rule for Nginx
+  firewalld:
+    service: "{{ item }}"
+    state: enabled
+    permanent: yes
+    immediate: yes
+  with_items:
+    - http
+    - https

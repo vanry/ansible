@@ -2,13 +2,3 @@
   systemd:
     name: nginx
     state: reloaded
-
-- name: Add firewalld rule for Nginx
-  firewalld:
-    service: "{{ item }}"
-    state: enabled
-    permanent: yes
-    immediate: yes
-  with_items:
-    - http
-    - https
