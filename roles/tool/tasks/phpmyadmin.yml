@@ -7,6 +7,6 @@
   composer:
     command: create-project
     arguments: "{{ phpmyadmin_package }}"
-    working_dir: "{{ tool_dir }}"
+    working_dir: "{{ web_tool_dir }}"
     prefer_dist: yes
   when: not phpmyadmin.stat.exists

@@ -1,2 +1,4 @@
----
-# handlers file for tools
+- name: Reload nginx
+  systemd:
+    name: nginx
+    state: reloaded
