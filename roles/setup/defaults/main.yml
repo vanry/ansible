@@ -1,4 +1,2 @@
 limit: "65535"
 timezone: Asia/Shanghai
-
-base_repo: https://mirrors.aliyun.com/repo/Centos-{{ ansible_distribution_major_version }}.repo

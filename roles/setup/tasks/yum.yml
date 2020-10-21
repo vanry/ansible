@@ -1,26 +1,14 @@
-- name: Set Yum releasever variable
+- name: Set yum releasever variable
   template:
     src: releasever
     dest: /etc/yum/vars/
-
-- name: Backup CentOS-Base.repo
-  copy:
-    src: /etc/yum.repos.d/CentOS-Base.repo
-    dest: /etc/yum.repos.d/CentOS-Base.repo.backup
-    remote_src: yes
-    force: no
-
-- name: Use Aliyun CentOS-Base.repo
-  get_url:
-    url: "{{ base_repo }}"
-    dest: /etc/yum.repos.d/CentOS-Base.repo
 
 - name: Update all packages
   yum:
     name: "*"
     state: latest
 
-- name: Install Basic Packages
+- name: Install common packages
   yum:
     name:
       - git
