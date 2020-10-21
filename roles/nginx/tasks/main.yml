@@ -3,7 +3,7 @@
     src: nginx.repo
     dest: /etc/yum.repos.d/
 
-- name: Install Nginx
+- name: Install nginx
   yum:
     name: nginx
     state: present
@@ -13,15 +13,15 @@
     src: nginx.conf
     dest: /etc/nginx/
   notify:
-    - Reload Nginx
+    - Reload nginx
 
-- name: Start and enable Nginx
+- name: Start and enable nginx
   systemd:
     name: nginx
     state: started
     enabled: yes
 
-- name: Add firewalld rule for Nginx
+- name: Add firewalld rule for nginx
   firewalld:
     service: "{{ item }}"
     state: enabled
