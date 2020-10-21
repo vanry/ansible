@@ -1,10 +1,6 @@
-- name: Install Epel Repository
+- name: Install Epel and Remi Repository
   yum:
-    name: epel-release
-    state: present
-  notify: Use Epel Mirror
-
-- name: Install Remi Repository
-  yum:
-    name: "{{ remi_repo }}"
+    name:
+      - epel-release
+      - "{{ remi_repo }}"
     state: present
