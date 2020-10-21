@@ -2,7 +2,7 @@
   shell: grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
   register: mysql_temporary_password
 
-- name: Change root's password
+- name: Change MySQL root password
   mysql_user:
     name: root
     password: "{{ mysql_root_password }}"

@@ -1,4 +1,4 @@
-- name: Copy mysql-community.repo
+- name: Add mysql-community.repo
   template:
     src: mysql-community.repo
     dest: /etc/yum.repos.d/

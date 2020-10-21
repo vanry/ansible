@@ -1,6 +1,6 @@
 [mysql-community]
 name=MySQL {{ mysql_version }} Community Server
-baseurl=http://repo.mysql.com/yum/mysql-{{ mysql_version }}-community/el/$releasever/$basearch/
+baseurl={{ mysql_baseurl_mirror if mysql_use_mirror else mysql_baseurl }}
 enabled=1
 gpgcheck=1
 gpgkey=http://repo.mysql.com/RPM-GPG-KEY-mysql
