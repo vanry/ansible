@@ -1,8 +1,8 @@
-web_default_dir: "{{ web_root_dir | default('/var/www', true) }}/default"
-web_tool_dir: "{{ web_default_dir }}/tools"
+web_default_dir: "{{ webroot_dir | default('/var/www', true) }}/default"
+tool_dir: "{{ web_default_dir }}/tools"
 
-phpmyadmin_path: "{{ web_tool_dir }}/phpmyadmin"
+phpmyadmin_path: "{{ tool_dir }}/phpmyadmin"
 phpmyadmin_package: phpmyadmin/phpmyadmin
 
-phpredisadmin_path: "{{ web_tool_dir }}/php-redis-admin"
+phpredisadmin_path: "{{ tool_dir }}/php-redis-admin"
 phpredisadmin_package: erik-dubbelboer/php-redis-admin

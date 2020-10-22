@@ -7,6 +7,6 @@
   composer:
     command: create-project
     arguments: "{{ phpredisadmin_package }}"
-    working_dir: "{{ web_tool_dir }}"
+    working_dir: "{{ tool_dir }}"
     prefer_dist: yes
   when: not phpredisadmin.stat.exists

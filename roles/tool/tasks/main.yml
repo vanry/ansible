@@ -1,11 +1,11 @@
 - name: Ensure tool directories exist
   file:
-    path: "{{ web_tool_dir }}"
+    path: "{{ tool_dir }}"
     state: directory
-    recurse: yes
     mode: 0775
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
+    recurse: yes
 
 - name: Replace nginx default.conf
   template:
@@ -17,7 +17,7 @@
 - name: Copy PHP Tools
   copy:
     src: "{{ item }}"
-    dest: "{{ web_tool_dir }}"
+    dest: "{{ tool_dir }}"
   with_items:
     - p.php
     - ocp.php
