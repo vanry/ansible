@@ -5,6 +5,5 @@
     mode: "{{ webroot_dir_mode }}"
     owner: "{{ webroot_dir_owner }}"
     group: "{{ webroot_dir_group }}"
-    recurse: yes
   notify:
     - Remove extra directories
