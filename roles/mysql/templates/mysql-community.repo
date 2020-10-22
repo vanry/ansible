@@ -1,6 +1,6 @@
 [mysql-community]
 name=MySQL {{ mysql_version }} Community Server
-baseurl={{ mysql_baseurl_mirror if mysql_use_mirror else mysql_baseurl }}
+baseurl={{ mysql_mirror_baseurl if mysql_mirror_enable else mysql_baseurl }}
 enabled=1
 gpgcheck=1
 gpgkey=http://repo.mysql.com/RPM-GPG-KEY-mysql
