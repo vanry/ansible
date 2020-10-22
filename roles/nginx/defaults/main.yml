@@ -1,5 +1,3 @@
-nginx_user: nginx
-
 nginx_log_level: crit
 
 nginx_server_tokens: "off"

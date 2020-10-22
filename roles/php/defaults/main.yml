@@ -19,14 +19,8 @@ php_upload_max_filesize: 50M
 
 php_disable_functions: []
 
-php_fpm_user: apache
-php_fpm_group: apache
-
-php_fpm_listen: /var/run/php-fpm/php-fpm.sock
-php_fpm_listen_allowed_clients: 127.0.0.1
-php_fpm_listen_owner: "{{ php_fpm_user }}"
-php_fpm_listen_group: "{{ php_fpm_group }}"
 php_fpm_listen_mode: 0660
+php_fpm_listen_allowed_clients: 127.0.0.1
 
 php_fpm_pm_max_children: 50
 php_fpm_pm_start_servers: 20

@@ -1,0 +1,10 @@
+nginx_user: nginx
+nginx_group: nginx
+nginx_fastcgi_pass: unix:{{ php_fpm_listen }}
+
+php_fpm_user: apache
+php_fpm_group: apache
+
+php_fpm_listen: /var/run/php-fpm/php-fpm.sock
+php_fpm_listen_owner: "{{ nginx_user }}"
+php_fpm_listen_group: "{{ nginx_group }}"
