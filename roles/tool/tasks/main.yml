@@ -2,10 +2,6 @@
   file:
     path: "{{ tool_dir }}"
     state: directory
-    mode: 0775
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    recurse: yes
 
 - name: Replace nginx default.conf
   template:
@@ -13,6 +9,7 @@
     dest: /etc/nginx/conf.d/
   notify:
     - Reload nginx
+  become: yes
 
 - name: Copy PHP Tools
   copy:
@@ -22,10 +19,7 @@
     - p.php
     - ocp.php
     - phpinfo.php
-  become: no
 
 - include: phpmyadmin.yml
-  become: no
 
 - include: phpredisadmin.yml
-  become: no

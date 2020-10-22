@@ -1,4 +1,4 @@
-web_default_dir: "{{ webroot_dir | default('/var/www', true) }}/default"
+web_default_dir: "{{ webroot_dir }}/default"
 tool_dir: "{{ web_default_dir }}/tools"
 
 phpmyadmin_path: "{{ tool_dir }}/phpmyadmin"
