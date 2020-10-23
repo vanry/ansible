@@ -8,5 +8,13 @@
     url: "{{ php_composer_url }}"
     dest: "{{ php_composer_path }}"
     mode: 0755
+  register: composer_status
   when: not composer_bin.stat.exists
-  notify: Change Composer repository
+
+- name: Change Composer repository
+  composer:
+    command: config
+    arguments: -g repo.packagist composer {{ php_composer_repo }}
+    working_dir: "{{ ansible_env.PWD }}"
+  when: composer_status.changed
+  become: no
