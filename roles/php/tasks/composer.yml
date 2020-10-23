@@ -9,4 +9,4 @@
     dest: "{{ php_composer_path }}"
     mode: 0755
   when: not composer_bin.stat.exists
-  notify: Change Composer Repository
+  notify: Change Composer repository

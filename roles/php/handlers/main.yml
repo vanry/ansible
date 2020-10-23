@@ -1,9 +1,9 @@
-- name: Reload PHP-FPM
+- name: Reload php-fpm
   systemd:
     name: php-fpm
     state: reloaded
 
-- name: Change Composer Repository
+- name: Change Composer repository
   composer:
     command: config
     arguments: -g repo.packagist composer {{ php_composer_repo }}

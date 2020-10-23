@@ -1,4 +1,4 @@
-- name: Install Epel and Remi Repository
+- name: Install Epel and Remi repository
   yum:
     name:
       - epel-release

@@ -9,12 +9,12 @@
     src: "{{ item }}"
     dest: /etc/
   notify:
-    - Reload PHP-FPM
+    - Reload php-fpm
   with_items:
     - php.ini
     - php-fpm.conf
 
-- name: Start and enable PHP-FPM
+- name: Start and enable php-fpm
   systemd:
     name: php-fpm
     state: started
