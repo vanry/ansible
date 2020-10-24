@@ -1,7 +1,0 @@
-- name: Remove extra directories
-  file:
-    path: "{{ webroot_dir }}/{{ item }}"
-    state: absent
-  with_items:
-    - html
-    - cgi-bin

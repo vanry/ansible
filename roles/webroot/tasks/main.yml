@@ -1,9 +1,0 @@
-- name: Ensure webroot directory exists
-  file:
-    path: "{{ webroot_dir }}"
-    state: directory
-    mode: "{{ webroot_dir_mode }}"
-    owner: "{{ webroot_dir_owner }}"
-    group: "{{ webroot_dir_group }}"
-  notify:
-    - Remove extra directories
