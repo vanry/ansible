@@ -10,3 +10,15 @@
     working_dir: "{{ tool_dir }}"
     prefer_dist: yes
   when: not phpmyadmin.stat.exists
+
+- name: Create phpMyAdmin config file
+  copy:
+    src: "{{ phpmyadmin_path }}/config.sample.inc.php"
+    dest: "{{ phpmyadmin_config_file }}"
+    force: no
+    remote_src: yes
+
+- name: Modify phpMyAdmin configuration
+  lineinfile:
+    path: "{{ phpmyadmin_config_file }}"
+    line: $cfg['LoginCookieValidity'] = 86400;

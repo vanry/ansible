@@ -1,3 +1,5 @@
+webroot_dir: /var/www
+
 nginx_user: nginx
 nginx_group: nginx
 nginx_fastcgi_pass: unix:{{ php_fpm_listen }}
