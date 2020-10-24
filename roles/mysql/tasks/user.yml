@@ -1,10 +1,34 @@
-- name: Get MySQL temporay password for root
-  shell: grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
+- name: Find temporay password for root
+  shell:
+    cmd: grep 'temporary password' /var/log/mysqld.log | awk 'END {print $NF}'
+    creates: "{{ mysql_root_credential_file }}"
   register: mysql_temporary_password
 
-- name: Change MySQL root password
+- name: Update root password from temporary password
+  command:
+    cmd: mysql -uroot -p{{ mysql_temporary_password.stdout }} --connect-expired-password
+         -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ mysql_root_password }}';"
+    creates: "{{ mysql_root_credential_file }}"
+  register: update_status
+
+- name: Create root .my.cnf
+  template:
+    src: root-my.cnf
+    dest: "{{ mysql_root_credential_file }}"
+    mode: 0600
+  when: update_status.changed
+
+- name: Update root password from previous password
   mysql_user:
-    name: root
+    name: "{{ mysql_root_username }}"
     password: "{{ mysql_root_password }}"
-    login_user: root
-    login_password: "{{ mysql_temporary_password.stdout }}"
+    login_unix_socket: "{{ mysql_socket }}"
+  register: password_status
+  when: mysql_root_password_update
+
+- name: Update root .my.cnf
+  template:
+    src: root-my.cnf
+    dest: "{{ mysql_root_credential_file }}"
+    mode: 0600
+  when: password_status.changed

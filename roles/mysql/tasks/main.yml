@@ -3,9 +3,11 @@
     src: mysql-community.repo
     dest: /etc/yum.repos.d/
 
-- name: Install MySQL
+- name: Install MySQL and MySQL-python
   yum:
-    name: mysql-community-server
+    name:
+      - mysql-community-server
+      - MySQL-python
     state: present
 
 - name: Copy my.cnf
@@ -20,3 +22,5 @@
     name: mysqld
     state: started
     enabled: yes
+
+- include: user.yml

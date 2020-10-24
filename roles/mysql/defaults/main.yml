@@ -4,10 +4,13 @@ mysql_baseurl: http://repo.mysql.com/yum/mysql-{{ mysql_version }}-community/el/
 mysql_mirror_enable: no
 mysql_mirror_baseurl: https://mirrors.tuna.tsinghua.edu.cn/mysql/yum/mysql-{{ mysql_version }}-community-el$releasever-$basearch/
 
-mysql_root_password: mysql-secret
+mysql_root_username: root
+mysql_root_password: MySQL@3306
+mysql_root_password_update: no
+mysql_root_credential_file: /root/.my.cnf
 
 mysql_port: 3306
-mysql_socket: /var/run/mysqld/mysql.sock
+mysql_socket: /var/run/mysqld/mysqld.sock
 mysql_datadir: /var/lib/mysql
 
 mysql_max_connections: 500
