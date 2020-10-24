@@ -3,10 +3,23 @@
     src: releasever
     dest: /etc/yum/vars/
 
+- name: Check if yum update lock exists
+  stat:
+    path: "{{ yum_update_lock }}"
+  register: lock_file
+
 - name: Update all packages
   yum:
     name: "*"
     state: latest
+  register: update_status
+  when: not lock_file.stat.exists
+
+- name: Lock yum update
+  template:
+    src: yum-update
+    dest: "{{ yum_update_lock }}"
+  when: update_status.changed
 
 - name: Install common packages
   yum:

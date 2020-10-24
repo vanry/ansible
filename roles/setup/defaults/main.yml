@@ -1,2 +1,5 @@
 limit: "65535"
+
 timezone: Asia/Shanghai
+
+yum_update_lock: /root/.yum-update
