@@ -3,9 +3,20 @@ redis_port: 6379
 redis_socket: ""
 redis_timeout: 300
 
+redis_loglevel: notice
+redis_logfile: /var/log/redis/redis.log
+
 redis_maxmemory: 0
 redis_maxmemory_policy: "noeviction"
 redis_maxmemory_samples: 5
+
+redis_save:
+  - 900 1
+  - 300 10
+  - 60 10000
+
+redis_dbfilename: dump.rdb
+redis_dir: /var/lib/redis
 
 redis_appendonly: "no"
 redis_appendfsync: everysec
