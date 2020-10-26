@@ -4,15 +4,30 @@
     enablerepo: "{{ php_enablerepo }}"
     state: present
 
-- name: Copy php.ini and php-fpm.conf
-  template:
-    src: "{{ item }}"
-    dest: /etc/
+- name: Optimize php.ini options
+  ini_file:
+    path: /etc/php.ini
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
   notify:
     - Reload php-fpm
   with_items:
-    - php.ini
-    - php-fpm.conf
+    - { section: "PHP", option: "expose_php", value: "{{ php_expose_php }}" }
+    - { section: "PHP", option: "memory_limit", value: "{{ php_memory_limit }}" }
+    - { section: "PHP", option: "post_max_size", value: "{{ php_post_max_size }}" }
+    - { section: "PHP", option: "short_open_tag", value: "{{ php_short_open_tag }}" }
+    - { section: "PHP", option: "cgi.fix_pathinfo", value: "{{ php_cgi_fix_pathinfo }}" }
+    - { section: "PHP", option: "max_execution_time", value: "{{ php_max_execution_time }}" }
+    - { section: "PHP", option: "upload_max_filesize", value: "{{ php_upload_max_filesize }}" }
+    - { section: "Date", option: "date.timezone", value: "{{ php_date_timezone }}" }
+
+- name: Copy php-fpm.conf
+  template:
+    src: php-fpm.conf
+    dest: /etc/
+  notify:
+    - Reload php-fpm
 
 - name: Start and enable php-fpm
   systemd:
