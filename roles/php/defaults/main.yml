@@ -19,6 +19,9 @@ php_upload_max_filesize: 50M
 
 php_disable_functions: []
 
+php_fpm_log_level: notice
+php_fpm_error_log: /var/log/php-fpm/error.log
+
 php_fpm_listen_mode: 0660
 php_fpm_listen_allowed_clients: 127.0.0.1
 
