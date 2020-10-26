@@ -1,6 +1,6 @@
 - name: Find temporay password for root
   shell:
-    cmd: grep 'temporary password' /var/log/mysqld.log | awk 'END {print $NF}'
+    cmd: grep 'temporary password' {{ mysql_error_log }} | awk 'END {print $NF}'
     creates: "{{ mysql_root_credential_file }}"
   register: mysql_temporary_password
 
