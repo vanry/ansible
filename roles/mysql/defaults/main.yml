@@ -10,9 +10,9 @@ mysql_root_password_update: no
 mysql_root_credential_file: /root/.my.cnf
 
 mysql_port: 3306
-mysql_socket: /var/run/mysqld/mysqld.sock
-mysql_pid_file: /var/run/mysqld/mysqld.pid
+mysql_socket: /var/lib/mysql/mysql.sock
 mysql_datadir: /var/lib/mysql
+mysql_pid_file: /var/run/mysqld/mysqld.pid
 mysql_error_log: /var/log/mysqld.log
 
 mysql_max_allowed_packet: 64M
