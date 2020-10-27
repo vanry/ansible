@@ -31,7 +31,6 @@ nginx_fastcgi_buffer_size: 64k
 nginx_fastcgi_busy_buffers_size: 128k
 nginx_fastcgi_temp_file_write_size: 256k
 
-nginx_gzip: "on"
 nginx_gzip_vary: "on"
 nginx_gzip_buffers: 4 16k
 nginx_gzip_min_length: 1k
