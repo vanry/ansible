@@ -15,6 +15,11 @@
     - Reload nginx
   become: yes
 
+- name: Copy index.html
+  copy:
+    src: index.html
+    dest: "{{ default_dir }}"
+
 - name: Copy PHP Tools
   copy:
     src: "{{ item }}"
