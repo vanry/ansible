@@ -21,4 +21,4 @@
 - name: Modify phpMyAdmin configuration
   lineinfile:
     path: "{{ phpmyadmin_config_file }}"
-    line: $cfg['LoginCookieValidity'] = 86400;
+    line: $cfg['LoginCookieValidity'] = {{ phpmyadmin_cookie_lifetime }};
