@@ -1,11 +1,14 @@
-- name: Ensure tool directories exist
+- name: Ensure default directory exists
   file:
-    path: "{{ tool_dir }}"
+    path: "{{ default_dir }}"
     state: directory
-    mode: 0775
     owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
   become: yes
+
+- name: Copy index.html
+  copy:
+    src: index.html
+    dest: "{{ default_dir }}"
 
 - name: Replace nginx default.conf
   template:
@@ -15,12 +18,12 @@
     - Reload nginx
   become: yes
 
-- name: Copy index.html
-  copy:
-    src: index.html
-    dest: "{{ default_dir }}"
+- name: Ensure tool directory exists
+  file:
+    path: "{{ tool_dir }}"
+    state: directory
 
-- name: Copy PHP Tools
+- name: Copy PHP tools
   copy:
     src: "{{ item }}"
     dest: "{{ tool_dir }}"
@@ -32,3 +35,9 @@
 - include: phpmyadmin.yml
 
 - include: phpredisadmin.yml
+
+- name: Change group of default directory
+  file:
+    path: "{{ default_dir }}"
+    group: "{{ php_fpm_group }}"
+    recurse: yes
