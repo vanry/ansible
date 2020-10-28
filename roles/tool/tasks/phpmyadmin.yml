@@ -21,4 +21,8 @@
 - name: Modify phpMyAdmin configuration
   lineinfile:
     path: "{{ phpmyadmin_config_file }}"
-    line: $cfg['LoginCookieValidity'] = {{ phpmyadmin_cookie_lifetime }};
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - { regexp: "\\$cfg\\['blowfish_secret'\\]", line: "$cfg['blowfish_secret'] = '{{ phpmyadmin_blowfish_secret }}';"}
+    - { regexp: "\\$cfg\\['LoginCookieValidity'\\]", line: "$cfg['LoginCookieValidity'] = {{ phpmyadmin_cookie_lifetime }};"}
