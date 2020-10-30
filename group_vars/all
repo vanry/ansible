@@ -1,4 +1,6 @@
-webroot_dir: /var/www
+webroot_dir: /srv
+
+ansible_group: "{{ ansible_user }}"
 
 nginx_user: nginx
 nginx_group: nginx
