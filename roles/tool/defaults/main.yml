@@ -4,7 +4,7 @@ tool_dir: "{{ default_dir }}/tools"
 phpmyadmin_path: "{{ tool_dir }}/phpmyadmin"
 phpmyadmin_package: phpmyadmin/phpmyadmin
 phpmyadmin_config_file: "{{ phpmyadmin_path }}/config.inc.php"
-phpmyadmin_blowfish_secret: QtAIzS1clWjHvlDZHs326C1n7D8Xknq1
+phpmyadmin_blowfish_secret: abcdefghijklmnopqrstuvwxyz1234567890
 phpmyadmin_cookie_lifetime: 86400
 
 phpredisadmin_path: "{{ tool_dir }}/php-redis-admin"
