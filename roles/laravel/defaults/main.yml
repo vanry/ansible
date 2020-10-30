@@ -1,0 +1,26 @@
+laravel_name: laravel
+laravel_dir: "{{ webroot_dir }}/{{ laravel_name }}"
+laravel_repo: https://github.com/laravel/laravel.git
+
+laravel_domain: laravel.test
+
+laravel_db_name: "{{ laravel_name }}"
+laravel_db_user: "{{ laravel_name }}"
+laravel_db_password: MySQL@3306
+
+laravel_env_file: "{{ laravel_dir }}/.env"
+laravel_env_vars: {}
+laravel_env_db:
+  DB_DATABASE: "{{ laravel_db_name }}"
+  DB_USERNAME: "{{ laravel_db_user }}"
+  DB_PASSWORD: "{{ laravel_db_password }}"
+
+laravel_schedule_enable: no
+laravel_schedule_name: "{{ laravel_name }} schedule"
+laravel_schedule_task: php {{ laravel_dir }}/artisan schedule:run >> /dev/null 2>&1
+
+laravel_queue_enable: no
+laravel_queue_name: laravel-queue
+laravel_queue_sleep: 3
+laravel_queue_tries: 3
+laravel_queue_timeout: 300

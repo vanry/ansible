@@ -1,0 +1,26 @@
+- name: Ensure {{ laravel_name }} directory exists
+  file:
+    path: "{{ laravel_dir }}"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_group }}"
+
+- name: Add laravel nginx config file
+  template:
+    src: laravel.conf
+    dest: /etc/nginx/conf.d/{{ laravel_name }}.conf
+  notify:
+    - Reload nginx
+
+- name: Create {{ laravel_name }} database
+  mysql_db:
+    name: "{{ laravel_db_name }}"
+    state: present
+
+- name: Create {{ laravel_name }} database user
+  mysql_user:
+    name: "{{ laravel_db_user }}"
+    password: "{{ laravel_db_password }}"
+    priv: "{{ laravel_db_name }}.*:ALL"
+    state: present
+  when: laravel_db_user != "root"

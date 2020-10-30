@@ -1,0 +1,16 @@
+[Unit]
+Description=Laravel Queue
+After=mysqld.service redis-server.service
+
+[Service]
+Type=simple
+User={{ php_fpm_user }}
+Group={{ php_fpm_group }}
+WorkingDirectory={{ laravel_dir }}
+ExecStart=/usr/bin/php artisan queue:work --sleep={{ laravel_queue_sleep }} --tries={{ laravel_queue_tries }} --timeout={{ laravel_queue_timeout }}
+Restart=always
+RestartSec=30s
+SuccessExitStatus=0
+
+[Install]
+WantedBy=multi-user.target

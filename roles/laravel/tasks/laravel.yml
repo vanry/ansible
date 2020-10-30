@@ -1,0 +1,82 @@
+- name: Create {{ laravel_name }} project
+  git:
+    repo: "{{ laravel_repo }}"
+    dest: "{{ laravel_dir }}"
+    update: no
+
+- name: Install {{ laravel_name }} dependencies
+  composer:
+    working_dir: "{{ laravel_dir }}"
+    prefer_dist: yes
+  register: install_status
+  changed_when: install_status.stdout.find("Nothing to install") == -1
+
+- name: Check if .env exists
+  stat:
+    path: "{{ laravel_env_file }}"
+  register: env_file
+
+- name: Generate .env from .env.example
+  copy:
+    src: "{{ laravel_dir }}/.env.example"
+    dest: "{{ laravel_env_file }}"
+    remote_src: yes
+  register: env_status
+  when: not env_file.stat.exists
+
+- name: Generate app key
+  command: php artisan key:generate
+  args:
+    chdir: "{{ laravel_dir }}"
+  when: env_status.changed
+
+- name: Modify env variables
+  replace:
+    path: "{{ laravel_env_file }}"
+    regexp: "({{ item.key }})=.*"
+    replace: "\\1={{ item.value }}"
+  with_dict: "{{ laravel_env_db | combine(laravel_env_vars) }}"
+
+- name: Migrate the database
+  command: php artisan migrate --force
+  args:
+    chdir: "{{ laravel_dir }}"
+  register: migrate
+  changed_when: migrate.stdout.find("Nothing to migrate") == -1
+
+- name: Add schedule task for {{ laravel_name }}
+  cron:
+    name: "{{ laravel_schedule_name }}"
+    user: "{{ php_fpm_user }}"
+    job: "{{ laravel_schedule_task }}"
+  when: laravel_schedule_enable
+  become: yes
+
+- name: Add laravel queue service
+  template:
+    src: queue.service
+    dest: /etc/systemd/system/{{ laravel_queue_name }}.service
+  when: laravel_queue_enable
+  become: yes
+
+- name: Start and enable {{ laravel_queue_name }} service
+  systemd:
+    name: "{{ laravel_queue_name }}"
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  when: laravel_queue_enable
+  become: yes
+
+- name: Change group and mode of writable directories
+  file:
+    path: "{{ laravel_dir }}/{{ item }}"
+    group: "{{ php_fpm_group }}"
+    mode: g+ws
+    recurse: yes
+  with_items:
+    - public
+    - storage
+    - bootstrap/cache
+  changed_when: False
+  become: yes
