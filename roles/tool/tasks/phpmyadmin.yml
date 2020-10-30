@@ -26,3 +26,9 @@
   with_items:
     - { regexp: "\\$cfg\\['blowfish_secret'\\]", line: "$cfg['blowfish_secret'] = '{{ phpmyadmin_blowfish_secret }}';"}
     - { regexp: "\\$cfg\\['LoginCookieValidity'\\]", line: "$cfg['LoginCookieValidity'] = {{ phpmyadmin_cookie_lifetime }};"}
+
+- name: Change group of phpMyAdmin directory
+  file:
+    path: "{{ phpmyadmin_path }}"
+    group: "{{ php_fpm_group }}"
+    mode: g+w

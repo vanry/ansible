@@ -3,6 +3,7 @@
     path: "{{ default_dir }}"
     state: directory
     owner: "{{ ansible_user }}"
+    group: "{{ ansible_group }}"
   become: yes
 
 - name: Copy index.html
@@ -35,9 +36,3 @@
 - include: phpmyadmin.yml
 
 - include: phpredisadmin.yml
-
-- name: Change group of default directory
-  file:
-    path: "{{ default_dir }}"
-    group: "{{ php_fpm_group }}"
-    recurse: yes
