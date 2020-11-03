@@ -1,0 +1,22 @@
+- name: Install Nginx, PHP, MySQL, Redis, Tools and Laravel
+  hosts: webservers
+  remote_user: vagrant
+
+  roles:
+    - role: setup
+      become: yes
+
+    - role: nginx
+      become: yes
+
+    - role: php
+      become: yes
+
+    - role: mysql
+      become: yes
+
+    - role: redis
+      become: yes
+
+    - role: tool
+    - role: laravel
