@@ -7,10 +7,9 @@ php_composer_url: https://mirrors.aliyun.com/composer/composer.phar
 php_composer_repo: https://mirrors.aliyun.com/composer/
 
 php_expose_php: "Off"
-php_short_open_tag: "On"
-php_cgi_fix_pathinfo: 0
-
 php_date_timezone: PRC
+
+php_cgi_fix_pathinfo: 0
 php_max_execution_time: 60
 
 php_memory_limit: 256M
