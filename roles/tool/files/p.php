@@ -139,7 +139,7 @@ if ($_POST['act'] == 'MySQL检测') {
     } else {
         $mailContent = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].($_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME']);
     }
-    $mailRe .= (false !== @mail($_POST['mailAdd'], $mailContent, "This is a test mail!\n\nhttps://lnmp.org")) ? '完成' : '失败';
+    $mailRe .= (false !== @mail($_POST['mailAdd'], $mailContent, 'This is a test mail!')) ? '完成' : '失败';
 }
 
 // 检测函数支持
@@ -544,7 +544,7 @@ if ($_GET['act'] == 'rt') {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>PHP探针 for LNMP一键安装包</title>
+<title>PHP探针</title>
 <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Powered by: Yahei.Net -->
@@ -579,8 +579,6 @@ input.btn{font-weight: bold; height: 20px; line-height: 20px; padding: 0 6px; co
 #page {width: 920px; padding: 0 20px; margin: 0 auto; text-align: left;}
 #header{position: relative; padding: 10px;}
 #footer {padding: 15px 0; text-align: center; font-size: 11px; font-family: Tahoma, Verdana;}
-#lnmplink {position: absolute; top: 20px; left: 115px; text-align: right; font-weight: bold; color: #06C;}
-#lnmplink a {color: #0000FF; text-decoration: underline;}
 .w_small{font-family: Courier New;}
 .w_number{color: #f800fe;}
 .sudu {padding: 0; background:#5dafd1; }
@@ -652,7 +650,6 @@ function displayData(dataJSON)
 <div id="page">
     <div id="header">
         <h1>PHP探针</h1>
-        <div id="lnmplink">for <a href="https://lnmp.org" target="_blank">LNMP一键安装包</a> <a href="https://bbs.vpser.net/forum-25-1.html" target="_blank">LNMP支持论坛</a></div>
     </div>
 
 <!--服务器相关参数-->
