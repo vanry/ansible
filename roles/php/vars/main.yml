@@ -1,7 +1,7 @@
 php_enablerepo: remi-php{{ php_version | replace(".", "") }}
 
 php_packages:
-  - php
+  - php-cli
   - php-fpm
   - php-gd
   - php-intl
